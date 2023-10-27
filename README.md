@@ -43,7 +43,7 @@ end
 sas = AHALAB_SAS(Phi, c, x_1); % create the object.
 sas.update(true); % first response is yes.
 sas.update(true); % second response is also yes.
-sas.backsapce();  % remove the second response
+sas.backstep();  % remove the second response
 sas.update(true); % change it to true.
 ```
 
@@ -56,6 +56,14 @@ Optional Arguments:
 - `'xMin'`: Minimum possible stimulation value (default: `-inf`).
 - `'minStepSizeDown'`: Lower bound for step size (default: `-inf`).
 - `'minStepSizeUp'`: Upper bound for step size (default: `inf`).
+- `'truncate'` : 
+        - The sent stimulus `x` is **always** limited to the range `[xMax,xMin]`.
+        - The algorithm updates on values stored in `xStaricase` not `x`.
+        - if truncate is `true` (default):
+                -`x` and `xStaircase` are equal.
+        - if truncate is `false`:
+                -`x` is limited to `[xMax,xMin]`.
+                -`xStaircase` is **not** limited to `[xMax,xMin]`.
 ### exmpale:
 
 ```matlab

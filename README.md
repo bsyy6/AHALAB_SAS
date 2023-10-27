@@ -67,7 +67,7 @@ Optional Arguments:
         - `x` and `xStaircase` are equal.
     - if truncate is `false`:
         - `x` is limited to `[xMax,xMin]`.
-        - xStaircase` is **not** limited to `[xMax,xMin]`.
+        - `xStaircase` is **not** limited to `[xMax,xMin]`.
 
 ### example:
 

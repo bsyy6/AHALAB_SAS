@@ -97,3 +97,6 @@ The function must have 4 input arguments in this order `(phi, c, m, response)`
    sas.setFunction(custom_updateFunction);
 ```
 this changes the original function from $` - \frac{c}{m+1}(Z_{n} - \phi)`$ to $` - \frac{c}{m+2}(Z_{n} - \phi)`$ note the negative sign is not inserted in the `custom_updateFunction`
+
+## Author
+Created by: Waleed Alghilan, Oct-2023 (Artificial Hands Area in Scuola Superiore Sant'Anna)

@@ -2,6 +2,10 @@
 
 `AHALAB_SAS` is a class for running a Stochastic Approximation Staircase (SAS) procedure. SAS is a method for estimating the threshold of a stimulus based on a binary response (e.g., correct/incorrect). It is a sequential procedure that converges to the threshold of a stimulus by adjusting the stimulus intensity based on the response of the observer for the previous stimuli.
 
+<p align="center">
+<img src="media/Figure.png" alt="Exmaple of the Stochastic Approximation estimating threshold of 50" style="width:50%; border:0;">
+</p>
+
 ### Default Update Equation
 
 The default update equation to update the stimulus values for is:
@@ -14,7 +18,7 @@ Where:
 - $`m`$ is the number of reversals (how many times the answer switches from ‘Yes’ to ‘No’ and vice versa).
 - $`\phi`$ is the target threshold probability. (between 0-1)
 - $`c`$ is a suitable constant.
-
+  
 ### Typical use:
 ```matlab
 Phi = 0.85;

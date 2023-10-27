@@ -258,18 +258,22 @@ classdef AHALAB_SAS < handle
 
         function obj = backstep(obj,varargin)
             % deletes the last n trials
-            if (nargin == 2)
-               nDeletes = varargin{2}; 
+            
+            if (nargin == 2 && isnumeric(varargin{1}))
+               nDeletes = varargin{1}; 
             end
             if(nargin == 1)
                 nDeletes = 1;
+            end
+            if(nDeletes>=obj.trialCount)
+                warning('AHALAB_SAS:invalidInput'," the number of deleted trials,exceeds the number of trials. Ignored")
             end
 
             if(obj.stop)
                 % because trialCount stops incrementing if exeperiment finished
                 rangeStartForX = obj.trialCount-nDeletes+2;
                 rangeStartForResponses = obj.trialCount-nDeletes+1;
-                obj.trialCount = obj.trialCount;
+                obj.trialCount = obj.trialCount-nDeletes+1;
                 obj.stop = 0;
             else
                 rangeStartForX = obj.trialCount-nDeletes+1;

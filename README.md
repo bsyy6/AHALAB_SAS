@@ -64,7 +64,7 @@ Optional Arguments:
         - if truncate is `false`:
                 -`x` is limited to `[xMax,xMin]`.
                 -`xStaircase` is **not** limited to `[xMax,xMin]`.
-### exmpale:
+### example:
 
 ```matlab
 sas = AHALAB_SAS(Phi, c, x_1, 'minStepSizeDown', 5, 'minStepSizeUp', 5);

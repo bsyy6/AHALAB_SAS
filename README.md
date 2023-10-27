@@ -60,14 +60,15 @@ Optional Arguments:
 - `'xMin'`: Minimum possible stimulation value (default: `-inf`).
 - `'minStepSizeDown'`: Lower bound for step size (default: `-inf`).
 - `'minStepSizeUp'`: Upper bound for step size (default: `inf`).
-- `'truncate'` : 
-        - The sent stimulus `x` is **always** limited to the range `[xMax,xMin]`.
-        - The algorithm updates on values stored in `xStaricase` not `x`.
-        - if truncate is `true` (default):
-                -`x` and `xStaircase` are equal.
-        - if truncate is `false`:
-                -`x` is limited to `[xMax,xMin]`.
-                -`xStaircase` is **not** limited to `[xMax,xMin]`.
+- `'truncate'` :
+    - The sent stimulus `x` is **always** limited to the range `[xMax,xMin]`.
+    - The algorithm updates on values stored in `xStaricase` not `x`.
+    - if truncate is `true` (default):
+        - `x` and `xStaircase` are equal.
+    - if truncate is `false`:
+        - `x` is limited to `[xMax,xMin]`.
+        - xStaircase` is **not** limited to `[xMax,xMin]`.
+
 ### example:
 
 ```matlab

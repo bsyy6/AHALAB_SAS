@@ -8,7 +8,7 @@
 
 ### Default Update Equation
 
-The default update equation to update the stimulus values for is:
+The default update equation to update the stimulus values is:
 
 $$ x_{n+1} =  x_{n} - \frac{c}{m+1}(Z_{n} - \phi) $$
 

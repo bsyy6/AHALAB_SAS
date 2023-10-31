@@ -267,6 +267,7 @@ classdef AHALAB_SAS < handle
             end
             if(nDeletes>=obj.trialCount)
                 warning('AHALAB_SAS:invalidInput'," the number of deleted trials,exceeds the number of trials. Ignored")
+                return;
             end
 
             if(obj.stop)
@@ -281,14 +282,22 @@ classdef AHALAB_SAS < handle
                 rangeStartForResponses = obj.trialCount-nDeletes+1;
                 obj.trialCount = obj.trialCount-nDeletes;
             end
-                
+            if(obj.trialCount>=2)
                 obj.xStaircase(rangeStartForX:end) = [];
                 obj.x(rangeStartForX:end) = [];
                 obj.xCurrent = obj.x(end);
                 obj.m = obj.m - sum(obj.reversals(rangeStartForResponses:end));
                 obj.reversals(rangeStartForResponses:end) = [];
                 obj.responses(rangeStartForResponses :end) = [];
-                
+            else
+                % special case only one is present -> reset everything
+                obj.xStaircase = obj.x_1;
+                obj.x = obj.x_1;
+                obj.xCurrent = obj.x_1;
+                obj.m = 0;
+                obj.reversals =[];
+                obj.responses = [];
+            end
         end
 
         function obj = setFunction(obj, func)

@@ -248,7 +248,7 @@ classdef AHALAB_SAS < handle
         function obj = reset(obj)
                 obj.xStaircase = obj.x_1;
                 obj.xCurrent = obj.x_1;
-                obj.x(1)=obj.x_1;
+                obj.x=obj.x_1;
                 obj.m = 0;
                 obj.reversals = []; 
                 obj.responses = [];

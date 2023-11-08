@@ -134,7 +134,6 @@ classdef AHALAB_SAS < handle
                     end
 
                     if strcmpi(varargin{n}, 'StartValue')
-                        obj.xStaircase(1) = varargin{n+1};
                         obj.x_1 = varargin{n+1};
                         valid = 1;
                     end
@@ -159,6 +158,16 @@ classdef AHALAB_SAS < handle
                     end        
                 end            
             end
+            
+            obj.x(1) = (max(min(obj.x_1,obj.xMax),obj.xMin));
+            obj.xCurrent = obj.x(1);
+            if(obj.truncate)
+                obj.xStaircase = obj.x(1);
+            else
+                obj.xStaircase = obj.x_1;
+            end
+
+            
         end
         
         function obj = update(obj, response)

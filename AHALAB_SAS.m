@@ -135,6 +135,7 @@ classdef AHALAB_SAS < handle
 
                     if strcmpi(varargin{n}, 'StartValue')
                         obj.xStaircase(1) = varargin{n+1};
+                        obj.x_1 = varargin{n+1};
                         valid = 1;
                     end
                     if strcmpi(varargin{n}, 'xMax')

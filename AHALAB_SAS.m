@@ -275,7 +275,7 @@ classdef AHALAB_SAS < handle
             if(nargin == 1)
                 nDeletes = 1;
             end
-            if(nDeletes>=obj.trialCount)
+            if(nDeletes>obj.trialCount)
                 warning('AHALAB_SAS:invalidInput'," the number of deleted trials,exceeds the number of trials. Ignored")
                 return;
             end

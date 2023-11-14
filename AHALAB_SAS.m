@@ -159,10 +159,10 @@ classdef AHALAB_SAS < handle
                 end            
             end
             
-            obj.x(1) = (max(min(obj.x_1,obj.xMax),obj.xMin));
-            obj.xCurrent = obj.x(1);
+            obj.x = (max(min(obj.x_1,obj.xMax),obj.xMin));
+            obj.xCurrent = obj.x;
             if(obj.truncate)
-                obj.xStaircase = obj.x(1);
+                obj.xStaircase = obj.x;
             else
                 obj.xStaircase = obj.x_1;
             end

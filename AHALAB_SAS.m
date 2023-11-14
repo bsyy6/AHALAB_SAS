@@ -38,7 +38,7 @@ classdef AHALAB_SAS < handle
     %  
     %  xMax: maximum possible stimulation value.   default: inf
     %  xMin: minimum possible stimulation value.   default: -inf
-    %  minStepSizeDown: lower bound for step size. default: -inf
+    %  minStepSizeDown: lower bound for step size. default: inf
     %  minStepSizeUp: upper bound for step size    default: inf
     %  stopCriterion: stop criterion               default: 'trials'
     %  stopRule: stop rule                         default: 50
@@ -116,7 +116,7 @@ classdef AHALAB_SAS < handle
                     valid = 0;
                     
                     if strcmpi(varargin{n},'minStepSizeDown')
-                        obj.minStepSizeDown = -varargin{n+1};
+                        obj.minStepSizeDown = varargin{n+1};
                         valid = 1;
                     end
                     if strcmpi(varargin{n},'minStepSizeUp')
@@ -197,9 +197,18 @@ classdef AHALAB_SAS < handle
             
             % stairCase_step = obj.c*(response-obj.Phi)/(1+obj.m) ;
             stairCase_step = obj.updateFunction(obj.Phi, obj.c, obj.m, response);
-            % minimum step size 
-            stairCase_step = min(max(-stairCase_step,obj.minStepSizeDown),obj.minStepSizeUp);
             
+            % minimum step size
+            abs_stepsize = abs(stairCase_step);
+
+            if(stairCase_step < 0)
+                abs_stepsize = max(abs_stepsize,obj.minStepSizeUp);
+            else
+                abs_stepsize = max(abs_stepsize,obj.minStepSizeDown);
+            end
+
+            stairCase_step = sign(stairCase_step)*abs_stepsize;
+
             if(obj.roundOutput)
                 stairCase_step = round(stairCase_step);
             end
@@ -246,7 +255,7 @@ classdef AHALAB_SAS < handle
                 obj.trialCount = 1; % the trialNumber
                 obj.xMax = inf; % maximum value
                 obj.xMin = -inf;% minimum value
-                obj.minStepSizeDown = -inf; % lower bound for step size
+                obj.minStepSizeDown = inf; % lower bound for step size
                 obj.minStepSizeUp = inf;% upper bound for step size
                 obj.stopCriterion = "trials"; % stop criterion
                 obj.stopRule      = 50;   % stop rule

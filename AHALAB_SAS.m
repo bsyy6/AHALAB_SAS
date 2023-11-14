@@ -116,11 +116,11 @@ classdef AHALAB_SAS < handle
                     valid = 0;
                     
                     if strcmpi(varargin{n},'minStepSizeDown')
-                        obj.minStepSizeDown = varargin{n+1};
+                        obj.minStepSizeDown = abs(varargin{n+1});
                         valid = 1;
                     end
                     if strcmpi(varargin{n},'minStepSizeUp')
-                        obj.minStepSizeUp = varargin{n+1};
+                        obj.minStepSizeUp = abs(varargin{n+1});
                         valid = 1;
                     end
                     
